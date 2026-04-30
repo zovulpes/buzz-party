@@ -1,4 +1,5 @@
-import { Routes, Route } from 'react-router-dom'
+import {Routes, Route} from 'react-router-dom'
+import { PlayerProvider } from "./context/PlayerContext";
 import StartPage from "./pages/StartPage/index.js";
 import GamePage from "./pages/GamePage/index.js";
 import GameSelectorPage from "./pages/GameSelectorPage/index.js";
@@ -7,7 +8,7 @@ import LeaderboardPage from "./pages/LeaderboardPage/index.js";
 
 function App() {
   return (
-      <div>
+          <PlayerProvider>
               <Routes>
                   <Route path='/' element={<StartPage />} />
                   <Route path='/select' element={<GameSelectorPage />} />
@@ -15,7 +16,7 @@ function App() {
                   <Route path='/game' element={<GamePage />} />
                   <Route path='/leaderboard' element={<LeaderboardPage />} />
               </Routes>
-      </div>
+          </PlayerProvider>
   )
 }
 

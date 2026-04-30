@@ -61,3 +61,15 @@
   }
 }
 
+.error {
+  color: var(--color-pink, #FF6B9D);
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.loading,
+.error {
+  text-align: center;
+  padding: 2rem;
+  color: var(--color-text, white);
+}

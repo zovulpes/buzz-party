@@ -1,82 +1,56 @@
-import { useState } from "react";
+import { useMemo, useState } from "react"; // убедитесь, что useState импортирован
 import Player from "../../components/Player/Player.jsx";
 import PlayerNameModal from "../../components/PlayerNameModal/PlayerNameModal.jsx";
+import { usePlayerContext } from "../../context/PlayerContext";
+import { usePlayerModal } from "../../hooks/usePlayerModal.js";
 import styles from "./LobbyPage.module.scss";
 import Button from "../../components/Button/Button.jsx";
 
 const LobbyPage = () => {
-    const [players, setPlayers] = useState([
-        { id: 1, active: false, name: "" },
-        { id: 2, active: false, name: "" },
-        { id: 3, active: false, name: "" },
-        { id: 4, active: false, name: "" }
-    ]);
+    // Данные и методы из глобального контекста
+    const { players, loading, error, togglePlayer, updatePlayerName, activatePlayer } = usePlayerContext();
 
+    // Логика модального окна
+    const { modalState, openAddModal, openEditModal, closeModal, handleSubmit } = usePlayerModal(players);
+
+    // Исправление: добавляем состояние для кнопки "CHOOSE GAMES"
     const [showMessage, setShowMessage] = useState(false);
 
-    // Состояние модалки
-    const [modalState, setModalState] = useState({
-        isOpen: false,
-        playerId: null,
-        initialName: "",
-        mode: "add" // "add" | "edit"
-    });
-
-    // Открытие модалки при клике на неактивного игрока
+    // Обработчики
     const handlePlayerClick = (id) => {
         const player = players.find(p => p.id === id);
         if (!player) return;
 
         if (player.active) {
-            // Деактивация
-            setPlayers(prev => prev.map(p =>
-                p.id === id ? { ...p, active: false } : p
-            ));
+            togglePlayer(id);
         } else {
-            // Активация → модалка
-            const activeCount = players.filter(p => p.active).length;
-            if (activeCount >= 4) return;
-
-            setModalState({
-                isOpen: true,
-                playerId: id,
-                initialName: `Player ${id}`,
-                mode: "add"
-            });
+            openAddModal(id, player.name || `Player ${id}`);
         }
     };
 
-    // Обработчик сохранения имени из модалки
-    const handleNameSubmit = (name) => {
-        const { playerId } = modalState;
-        if (!playerId) return;
-
-        setPlayers(prev => prev.map(p =>
-            p.id === playerId
-                ? { ...p, active: true, name }
-                : p
-        ));
+    const handleEditClick = (id, name) => {
+        openEditModal(id, name);
     };
 
-    // Редактирование имени активного игрока
-    const handleEditClick = (id, currentName) => {
-        setModalState({
-            isOpen: true,
-            playerId: id,
-            initialName: currentName,
-            mode: "edit"
-        });
-    };
-
-    // Закрытие модалки
-    const closeModal = () => {
-        setModalState(prev => ({ ...prev, isOpen: false }));
-    };
+    const handleNameSubmit = handleSubmit((playerId, name) => {
+        if (modalState.mode === "add") {
+            activatePlayer(playerId, name); // активируем + сохраняем имя
+        } else {
+            updatePlayerName(playerId, name); // только редактирование имени
+        }
+    });
 
     // Список для отображения
-    const activePlayers = players.filter(p => p.active);
-    const firstInactive = players.find(p => !p.active);
-    const displayedPlayers = [...activePlayers, ...(firstInactive ? [firstInactive] : [])];
+    const displayedPlayers = useMemo(() => {
+        if (loading || !players.length) return [];
+        const active = players.filter(p => p.active);
+        const firstInactive = players.find(p => !p.active);
+        return [...active, ...(firstInactive ? [firstInactive] : [])];
+    }, [players, loading]);
+
+    // Состояния загрузки и ошибки
+    if (loading) return <div className={styles.loading}>Loading...</div>;
+    if (error) return <div className={styles.error}>Error: {error}</div>;
 
     return (
         <div className={styles.page}>
@@ -101,6 +75,7 @@ const LobbyPage = () => {
                                     handleEditClick(player.id, player.name);
                                 }}
                                 aria-label="Edit player name"
+                                title="Edit name"
                             >
                                 ✎
                             </button>
@@ -113,11 +88,10 @@ const LobbyPage = () => {
                 CHOOSE GAMES
             </Button>
 
-            {showMessage && activePlayers.length < 2 && (
+            {showMessage && players.filter(p => p.active).length < 2 && (
                 <p className={styles.error}>Minimum 2 players required</p>
             )}
 
-            {/* Вынесенная модалка */}
             <PlayerNameModal
                 isOpen={modalState.isOpen}
                 playerId={modalState.playerId}

@@ -5,6 +5,7 @@ import { usePlayerContext } from "../../context/PlayerContext";
 import { usePlayerModal } from "../../hooks/usePlayerModal.js";
 import styles from "./LobbyPage.module.scss";
 import Button from "../../components/Button/Button.jsx";
+import {useNavigate} from "react-router-dom";
 
 const LobbyPage = () => {
     // Данные и методы из глобального контекста
@@ -39,6 +40,20 @@ const LobbyPage = () => {
             updatePlayerName(playerId, name); // только редактирование имени
         }
     });
+
+    const navigate = useNavigate()
+
+    const handlePageChange = () => {
+        const activeCount = players.filter(p => p.active).length;
+
+        if (activeCount < 2) {
+            // Мало игроков - показываем ошибку
+            setShowMessage(true);
+        } else {
+            // Всё ок - переходим дальше
+            navigate('/select');
+        }
+    };
 
     // Список для отображения
     const displayedPlayers = useMemo(() => {
@@ -84,7 +99,7 @@ const LobbyPage = () => {
                 ))}
             </div>
 
-            <Button onClick={() => setShowMessage(true)}>
+            <Button onClick={handlePageChange}>
                 CHOOSE GAMES
             </Button>
 

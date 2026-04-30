@@ -1,4 +1,3 @@
-import Navigation from "./pages/Navigation.jsx";
 import { Routes, Route } from 'react-router-dom'
 import StartPage from "./pages/StartPage/index.js";
 import GamePage from "./pages/GamePage/index.js";
@@ -9,7 +8,6 @@ import LeaderboardPage from "./pages/LeaderboardPage/index.js";
 function App() {
   return (
       <div>
-          <Navigation/>
               <Routes>
                   <Route path='/' element={<StartPage />} />
                   <Route path='/select' element={<GameSelectorPage />} />

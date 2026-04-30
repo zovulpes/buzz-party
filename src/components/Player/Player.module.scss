@@ -18,6 +18,10 @@
 
 .section h3 {
   text-align: center;
+  max-width: 10rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .opacity {

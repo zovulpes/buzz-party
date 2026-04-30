@@ -28,3 +28,36 @@
   margin-top: 3rem;
   margin-bottom: 2rem;
 }
+
+.playerWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.editBtn {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  background: var(--color-black-2, #4D7CFE);
+  border: solid 1px var(--color-white);
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, background 0.2s;
+
+  &:hover {
+    transform: scale(1.1);
+    background: var(--color-pink, #FF6B9D);
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+

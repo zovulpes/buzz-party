@@ -1,4 +1,5 @@
 import Button from '../../components/Button/Button.jsx'
+import Cloud from '../../components/Cloud/Cloud.jsx'
 import styles from './StartPage.module.scss'
 import {useNavigate} from "react-router-dom";
 
@@ -16,8 +17,7 @@ const StartPage = () => {
                 <h3>PARTY</h3>
             </div>
             <Button onClick={handleStart}>START GAME</Button>
-            <div className={styles.cloud}></div>
-            <div className={styles.cloudLayer2}></div>
+            <Cloud />
         </div>
     )
 }

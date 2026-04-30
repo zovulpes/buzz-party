@@ -1,0 +1,21 @@
+.button {
+  border: 2px solid transparent;
+  border-radius: 40px;
+  background:
+          linear-gradient(var(--color-black-2)) padding-box,
+          linear-gradient(90deg, var(--color-pink), var(--color-blue)) border-box;
+
+  color: white;
+  font-family: 'WLMIdeaRegular', sans-serif;
+  padding: 0.5rem 0;
+  width: 20rem;
+  box-shadow: 0 0 60px rgba(255,0,255, 30%);
+  font-size:2rem;
+  z-index: 1000;
+
+  cursor:pointer;
+
+  &:active {
+    scale:1.05;
+  }
+}

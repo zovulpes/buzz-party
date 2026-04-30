@@ -1,0 +1,21 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-black-1);
+}
+
+input,
+label,
+button {
+    transition-duration: var(--transition-duration);
+}
+
+:focus-visible {
+    outline: 2px dashed var(--color-black-2);
+    outline-offset: 4px;
+    transition-duration: 0s !important;
+}

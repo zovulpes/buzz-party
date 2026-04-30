@@ -1,0 +1,30 @@
+.page {
+  min-height: 95vh;
+  color: var(--color-white);
+  font-family: var(--font-regular), sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 7rem;
+}
+
+.page h1 {
+  font-size: 2.5rem;
+}
+
+.page h2 {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.playersContainer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  margin-bottom: 3rem;
+}
+
+.page p {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}

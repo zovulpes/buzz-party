@@ -1,0 +1,49 @@
+.section svg {
+  background-color: #161633;
+  border-radius: 60%;
+  padding: 1.3rem;
+  width: 7rem;
+  height: 7rem;
+  border: dashed 5px #2e2e48;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+  cursor: pointer;
+
+  &:active {
+    scale:1.05;
+  }
+}
+
+.section h3 {
+  text-align: center;
+}
+
+.opacity {
+  opacity: 0;
+}
+
+.section svg[data-count="1"] {
+  background-color: var(--color-blue);
+  box-shadow: 0 0 2rem var(--color-blue);
+  border: none;
+}
+
+.section svg[data-count="2"] {
+  background-color: var(--color-pink);
+  box-shadow: 0 0 2rem var(--color-pink);
+  border: none;
+}
+
+.section svg[data-count="3"] {
+  background-color: var(--color-green);
+  box-shadow: 0 0 2rem var(--color-green);
+  border: none;
+}
+
+.section svg[data-count="4"] {
+  background-color: var(--color-violet);
+  box-shadow: 0 0 2rem var(--color-violet);
+  border: none;
+}

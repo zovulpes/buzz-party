@@ -1,0 +1,22 @@
+:root {
+    --color-white: #FFFFFF;
+    --color-black-1: #0b0a1b; /* задний план */
+    --color-black-2: #101026; /* кнопка фон */
+    --color-black-3: #252539; /* граница кнопки */
+    --color-pink: #FF00FF;
+    --color-green: #39FE14;
+    --color-blue: #01feff;
+    --color-violet: #8B00FF;
+
+    --font-italic: 'famiar';
+    --font-regular: 'WLMIdeaRegular';
+
+    --border: 1px solid var(--color-white);
+    --border-radius: 8px;
+
+    --box-shadow: 0 4px 4px -4px rgba(12, 12, 13, 0.05), 0 16px 32px -4px rgba(12, 12, 13, 0.1);
+
+    --input-height: 40px;
+
+    --transition-duration: 0.2s;
+}

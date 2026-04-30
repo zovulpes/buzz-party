@@ -11,11 +11,11 @@ function App() {
       <div>
           <Navigation/>
               <Routes>
-                  <Route path='start' element={<StartPage />} />
-                  <Route path='select' element={<GameSelectorPage />} />
-                  <Route path='lobby' element={<LobbyPage />} />
-                  <Route path='game' element={<GamePage />} />
-                  <Route path='leaderboard' element={<LeaderboardPage />} />
+                  <Route path='/' element={<StartPage />} />
+                  <Route path='/select' element={<GameSelectorPage />} />
+                  <Route path='/lobby' element={<LobbyPage />} />
+                  <Route path='/game' element={<GamePage />} />
+                  <Route path='/leaderboard' element={<LeaderboardPage />} />
               </Routes>
       </div>
   )

@@ -1,16 +1,112 @@
-# React + Vite
+# Buzz Party
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Весёлое интерактивное приложение для вечеринок, в котором игроки соревнуются в мини-играх и отслеживают очки в общем рейтинге.
 
-Currently, two official plugins are available:
+## Возможности
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Управление игроками: добавление до 4 игроков с произвольными именами
+- Выбор игр: подбор мини-игр из каталога
+- Пошаговый игровой процесс: игроки ходят по очереди, остальные ждут своей попытки
+- Таблица лидеров: отслеживание очков в нескольких играх с обновлением рейтинга в реальном времени
+- Адаптивный дизайн: корректная работа на мобильных устройствах, планшетах и компьютерах
+- Локальное сохранение: данные игроков и прогресс игры сохраняются на устройстве
 
-## React Compiler
+## Доступные игры
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Fast Tap (доступна)
 
-## Expanding the ESLint configuration
+Нажимайте на кнопку как можно быстрее в течение 8 секунд. Побеждает игрок с наибольшим количеством нажатий.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Игры в разработке
+
+- Memory Match — проверка памяти
+- Guess The Sound — угадывание звуков
+- Reaction Race — проверка скорости реакции
+- Trivia Blitz — быстрые ответы на вопросы
+- Balance Act — удержание баланса под давлением
+
+## Технологии
+
+- Фронтенд: React 19.2.4
+- Сборка: Vite 8.0.1
+- Маршрутизация: React Router DOM 7.14.2
+- Стили: SCSS с методологией BEM
+- Управление состоянием: React Context API + localStorage
+- Линтинг: ESLint
+
+## Структура проекта
+
+\`\`\`
+src/
+├── app/ # Точка входа и маршрутизация
+│ ├── App.jsx # Главный компонент приложения
+│ ├── main.jsx # Рендер React
+│ ├── providers/ # Провайдеры контекста
+│ └── router/ # Определение маршрутов
+├── entities/ # Основные бизнес-сущности
+│ └── player/ # Модель игрока и хуки
+├── features/ # Функциональные модули
+│ ├── add-player/ # Добавление игроков
+│ └── select-games/ # Выбор игр и мини-игры
+├── pages/ # Полноценные страницы
+│ ├── start/ # Стартовая страница
+│ ├── lobby/ # Выбор игроков
+│ ├── game-selector/ # Каталог игр
+│ ├── game/ # Экран игры
+│ └── leaderboard/ # Таблица результатов
+├── shared/ # Общие компоненты и утилиты
+│ ├── ui/ # Переиспользуемые UI-компоненты
+│ └── assets/ # Шрифты и изображения
+└── widgets/ # Сложные UI-модули
+└── game-gallery/ # Карточки и сетка игр
+\`\`\`
+
+## Как играть
+
+1. Старт: откройте приложение и введите имена игроков (2–4 человека)
+2. Выбор игр: выберите мини-игры
+3. Игра: играйте по очереди, передавая устройство друг другу
+4. Подсчёт очков: после каждой игры обновляется таблица лидеров
+5. Повтор: играйте в несколько игр и накапливайте очки
+6. Победа: выигрывает игрок с наибольшим количеством очков
+
+## Адаптивный дизайн
+
+Приложение полностью адаптивно и оптимизировано для:
+
+- мобильных устройств (базовые стили)
+- планшетов (от 768px)
+- компьютеров (от 1024px)
+
+## Хранение данных
+
+- Игроки: сохраняются в localStorage с ключом `lobby_players_v1`
+- Игровые сессии: сохраняются в sessionStorage с ключом `buzz_party_game_session_v1`
+- Прогресс игры: автоматически синхронизируется при переходе между страницами
+
+## Игровой процесс
+
+\`\`\`
+Старт → Добавление игроков → Выбор игр → Игровые ходы → Таблица лидеров → (Сыграть снова или выйти)
+\`\`\`
+
+Каждый раунд проходит так:
+
+1. Игрок проходит свою попытку
+2. Результат сохраняется
+3. Устройство передаётся следующему игроку
+4. Процесс повторяется, пока все не сыграют
+5. Итоги отображаются в таблице лидеров
+
+## Стилизация
+
+Проект использует SCSS с:
+
+- методологией именования BEM
+- CSS-переменными для темизации
+- медиазапросами для адаптивности
+- сеткой Masonry для каталога игр
+
+## Лицензия
+
+Проект с открытым исходным кодом и распространяется по лицензии MIT.

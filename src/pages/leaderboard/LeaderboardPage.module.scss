@@ -1,0 +1,36 @@
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 12px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.rank {
+  opacity: 0.75;
+}
+
+.winner {
+  border-color: rgba(255, 215, 0, 0.75);
+  box-shadow: 0 0 0 1px rgba(255, 215, 0, 0.5);
+}
+
+.error {
+  color: #ff8b8b;
+}
+
+.actions {
+  display: grid;
+  justify-items: center;
+  margin-top: 8px;
+}

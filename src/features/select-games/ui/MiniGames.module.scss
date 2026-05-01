@@ -1,0 +1,47 @@
+.gameBox {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 16px;
+  max-width: 720px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.gameBox h3 {
+  margin: 0 0 8px;
+  font-size: clamp(20px, 3vw, 30px);
+}
+
+.gameBox p {
+  margin: 0 0 12px;
+  opacity: 0.9;
+}
+
+.options {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr;
+  margin-bottom: 14px;
+}
+
+.option {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.option.active {
+  border-color: #4caf50;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.35) inset;
+}
+
+@media (min-width: 768px) {
+  .options {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

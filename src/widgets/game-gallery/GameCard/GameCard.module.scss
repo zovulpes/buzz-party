@@ -1,0 +1,186 @@
+.card {
+  position: relative;
+  width: 100%;
+  min-height: 220px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+.locked {
+  filter: grayscale(1);
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
+.locked::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(12, 12, 12, 0.4);
+}
+
+.v0 {
+  height: 220px;
+}
+
+.v1 {
+  height: 280px;
+}
+
+.v2 {
+  height: 250px;
+}
+
+.v3 {
+  height: 320px;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+  color: white;
+  padding: 12px;
+}
+
+.info h3 {
+  margin: 0 0 4px 0;
+  font-size: clamp(12px, 2.5vw, 18px);
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+.info p {
+  margin: 0;
+  font-size: clamp(10px, 2vw, 14px);
+  opacity: 0.8;
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+.selectBtn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  border: 2px solid white;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.5);
+    transform: scale(1.1);
+  }
+
+  &.selected {
+    background: #4caf50;
+    border-color: #4caf50;
+  }
+}
+
+.badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #e6e6e6;
+  border-radius: 999px;
+  font-size: 11px;
+  padding: 6px 10px;
+}
+
+/* Tablet styles (768px and above) */
+@media (min-width: 768px) {
+  .card {
+    min-height: 280px;
+    border-radius: 12px;
+  }
+
+  .v0 {
+    height: 280px;
+  }
+
+  .v1 {
+    height: 360px;
+  }
+
+  .v2 {
+    height: 320px;
+  }
+
+  .v3 {
+    height: 410px;
+  }
+
+  .info h3 {
+    font-size: 16px;
+  }
+
+  .info p {
+    font-size: 12px;
+  }
+
+  .selectBtn {
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+  }
+}
+
+/* Desktop styles (1024px and above) */
+@media (min-width: 1024px) {
+  .card {
+    min-height: 320px;
+  }
+
+  .v0 {
+    height: 320px;
+  }
+
+  .v1 {
+    height: 420px;
+  }
+
+  .v2 {
+    height: 370px;
+  }
+
+  .v3 {
+    height: 470px;
+  }
+
+  .info h3 {
+    font-size: 20px;
+  }
+
+  .info p {
+    font-size: 14px;
+  }
+
+  .selectBtn {
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+  }
+}

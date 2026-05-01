@@ -1,0 +1,43 @@
+.game-selector {
+  padding: 20px 12px;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.error {
+  color: #ff8b8b;
+  margin: 8px 0 12px;
+}
+
+/* Tablet styles (768px and above) */
+@media (min-width: 768px) {
+  .game-selector {
+    padding: 40px 20px;
+  }
+
+  .game-selector h1 {
+    font-size: 32px;
+  }
+
+  .game-selector h2 {
+    font-size: 18px;
+    margin-bottom: 40px;
+  }
+}
+
+/* Desktop styles (1024px and above) */
+@media (min-width: 1024px) {
+  .game-selector {
+    padding: 60px 40px;
+  }
+
+  .game-selector h1 {
+    font-size: 40px;
+    margin-bottom: 12px;
+  }
+
+  .game-selector h2 {
+    font-size: 20px;
+    margin-bottom: 60px;
+  }
+}

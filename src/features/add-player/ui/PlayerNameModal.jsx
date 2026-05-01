@@ -13,85 +13,85 @@ import Button from "@/shared/ui/button/Button.jsx";
  * @param {function} props.onSubmit - callback при сохранении (name: string) => void
  */
 const PlayerNameModal = ({
-                             isOpen,
-                             playerId,
-                             initialName,
-                             mode = "add",
-                             onClose,
-                             onSubmit
-                         }) => {
-    // Состояние инпута внутри модалки
-    const [tempName, setTempName] = useState(initialName);
+  isOpen,
+  playerId,
+  initialName,
+  mode = "add",
+  onClose,
+  onSubmit,
+}) => {
+  // Состояние инпута внутри модалки
+  const [tempName, setTempName] = useState(initialName);
 
-    // Обновляем tempName при изменении initialName (для редактирования)
-    useEffect(() => {
-        setTempName(initialName);
-    }, [initialName]);
+  // Обновляем tempName при изменении initialName (для редактирования)
+  useEffect(() => {
+    // Defer updating state to avoid synchronous setState inside effect
+    const t = setTimeout(() => setTempName(initialName), 0);
+    return () => clearTimeout(t);
+  }, [initialName]);
 
-    // Закрытие по Escape
-    useEffect(() => {
-        if (!isOpen) return;
+  // Закрытие по Escape
+  useEffect(() => {
+    if (!isOpen) return;
 
-        const handleEscape = (e) => {
-            if (e.key === "Escape") onClose();
-        };
-        window.addEventListener("keydown", handleEscape);
-        return () => window.removeEventListener("keydown", handleEscape);
-    }, [isOpen, onClose]);
-
-    // Фокус на инпут при открытии
-    useEffect(() => {
-        if (isOpen) {
-            setTimeout(() => {
-                document.querySelector(`.${styles.input}`)?.focus();
-            }, 100);
-        }
-    }, [isOpen]);
-
-    const handleSubmit = () => {
-        const trimmed = tempName.trim();
-        if (trimmed) {
-            onSubmit(trimmed);
-        }
-        onClose();
+    const handleEscape = (e) => {
+      if (e.key === "Escape") onClose();
     };
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, [isOpen, onClose]);
 
-    const handleKeyDown = (e) => {
-        if (e.key === "Enter") {
-            handleSubmit();
-        }
-    };
+  // Фокус на инпут при открытии
+  useEffect(() => {
+    if (isOpen) {
+      setTimeout(() => {
+        document.querySelector(`.${styles.input}`)?.focus();
+      }, 100);
+    }
+  }, [isOpen]);
 
-    if (!isOpen) return null;
+  const handleSubmit = () => {
+    const trimmed = tempName.trim();
+    if (trimmed) {
+      onSubmit(trimmed);
+    }
+    onClose();
+  };
 
-    return (
-        <div className={styles.overlay} onClick={onClose}>
-            <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
-                <h3>
-                    {mode === "edit" ? "Edit Player Name" : "Add New Player"}
-                </h3>
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSubmit();
+    }
+  };
 
-                <input
-                    type="text"
-                    className={styles.input}
-                    value={tempName}
-                    onChange={(e) => setTempName(e.target.value)}
-                    placeholder={`Player ${playerId}`}
-                    maxLength={20}
-                    onKeyDown={handleKeyDown}
-                />
+  if (!isOpen) return null;
 
-                <div className={styles.actions}>
-                    <Button onClick={onClose} variant="secondary">
-                        Cancel
-                    </Button>
-                    <Button onClick={handleSubmit}>
-                        {mode === "edit" ? "Save" : "Join"}
-                    </Button>
-                </div>
-            </div>
+  return (
+    <div className={styles.overlay} onClick={onClose}>
+      <div className={styles.modal} onClick={(e) => e.stopPropagation()}>
+        <h3>{mode === "edit" ? "Edit Player Name" : "Add New Player"}</h3>
+
+        <input
+          type="text"
+          className={styles.input}
+          value={tempName}
+          onChange={(e) => setTempName(e.target.value)}
+          placeholder={`Player ${playerId}`}
+          maxLength={20}
+          onKeyDown={handleKeyDown}
+        />
+
+        <div className={styles.actions}>
+          <Button onClick={onClose} variant="secondary">
+            Cancel
+          </Button>
+          <Button onClick={handleSubmit}>
+            {mode === "edit" ? "Save" : "Join"}
+          </Button>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default PlayerNameModal;

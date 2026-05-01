@@ -33,7 +33,8 @@
 - Стили: SCSS с методологией BEM
 - Управление состоянием: React Context API + localStorage
 - Линтинг: ESLint
-
+  
+## Структура проекта
 <img width="483" height="503" alt="image" src="https://github.com/user-attachments/assets/2c5dbc27-b73d-4448-9536-af3860c6d23c" />
 
 ## Как играть

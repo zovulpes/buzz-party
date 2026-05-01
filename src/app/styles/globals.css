@@ -6,6 +6,14 @@
 
 body {
     background-color: var(--color-black-1);
+    min-height: 95vh;
+    color: var(--color-white);
+    font-family: var(--font-regular), sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 7rem;
+    text-align: center;
 }
 
 input,
@@ -18,4 +26,12 @@ button {
     outline: 2px dashed var(--color-black-2);
     outline-offset: 4px;
     transition-duration: 0s !important;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 1rem;
 }

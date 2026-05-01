@@ -1,10 +1,11 @@
-import PlayerCard from "@/entities/player/ui/PlayerCard";
+import PlayerCard from "@/entities/player/ui/Player/PlayerCard/PlayerCard.jsx";
 import PlayerNameModal from "@/features/add-player/ui/PlayerNameModal";
 import { usePlayerContext } from "@/entities/player/model/PlayerContext";
 import { usePlayerModal } from "@/features/add-player/model/usePlayerModal";
 import { useLobby } from "@/features/manage-lobby/model/useLobby";
 import Button from "@/shared/ui/button/Button";
 import styles from "./LobbyPage.module.scss";
+import EditButton from "@/entities/player/ui/Player/EditButton/EditButton.jsx";
 
 const LobbyPage = () => {
     const {
@@ -39,7 +40,7 @@ const LobbyPage = () => {
     });
 
     return (
-        <div className={styles.page}>
+        <div>
             <h1>WHO'S PLAYING?</h1>
             <h2>Tap an avatar to join the party</h2>
 
@@ -54,15 +55,13 @@ const LobbyPage = () => {
                         />
 
                         {player.active && (
-                            <button
-                                className={styles.editBtn}
+                            <EditButton
                                 onClick={(e) => {
                                     e.stopPropagation();
                                     modal.openEditModal(player.id, player.name);
                                 }}
                             >
-                                ✎
-                            </button>
+                            </EditButton>
                         )}
                     </div>
                 ))}

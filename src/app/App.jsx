@@ -1,10 +1,10 @@
 import {Routes, Route} from 'react-router-dom'
-import { PlayerProvider } from "./context/PlayerContext";
-import StartPage from "./pages/StartPage/index.js";
-import GamePage from "./pages/GamePage/index.js";
-import GameSelectorPage from "./pages/GameSelectorPage/index.js";
-import LobbyPage from "./pages/LobbyPage/index.js";
-import LeaderboardPage from "./pages/LeaderboardPage/index.js";
+import { PlayerProvider } from "@/entities/player/model/PlayerContext.jsx";
+import StartPage from "@/pages/start/index.js";
+import GamePage from "@/pages/game/index.js";
+import GameSelectorPage from "@/pages/game-selector/index.js";
+import LobbyPage from "@/pages/lobby/index.js";
+import LeaderboardPage from "@/pages/leaderboard/index.js";
 
 function App() {
   return (

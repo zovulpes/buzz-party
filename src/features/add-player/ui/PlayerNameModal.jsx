@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./PlayerNameModal.module.scss";
-import Button from "../Button/Button.jsx";
+import Button from "@/shared/ui/button/Button.jsx";
 
 /**
  * Модальное окно для ввода/редактирования имени игрока

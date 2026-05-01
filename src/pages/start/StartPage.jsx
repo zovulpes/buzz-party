@@ -1,5 +1,5 @@
-import Button from '../../components/Button/Button.jsx'
-import Cloud from '../../components/Cloud/Cloud.jsx'
+import Button from '@/shared/ui/button/Button.jsx'
+import Cloud from '@/shared/ui/cloud/Cloud.jsx'
 import styles from './StartPage.module.scss'
 import {useNavigate} from "react-router-dom";
 

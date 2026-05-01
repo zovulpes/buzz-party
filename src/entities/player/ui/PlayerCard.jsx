@@ -1,6 +1,6 @@
-import styles from './Player.module.scss';
+import styles from './PlayerCard.module.scss';
 
-const Player = ({ count, active, onClick, name }) => {
+const PlayerCard = ({ count, active, onClick, name }) => {
     return (
         <section className={styles.section} onClick={onClick}>
             {active ? (
@@ -18,4 +18,4 @@ const Player = ({ count, active, onClick, name }) => {
     );
 };
 
-export default Player;
+export default PlayerCard;

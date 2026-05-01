@@ -1,5 +1,5 @@
 import {useNavigate} from "react-router-dom";
-import Button from "../../components/Button/Button.jsx";
+import Button from "@/shared/ui/button/Button.jsx";
 
 const GameSelector = () => {
 

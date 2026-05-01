@@ -19,7 +19,7 @@ export const usePlayers = () => {
                 return DEFAULT_PLAYERS.map(def => {
                     const savedPlayer = parsed.find(p => p.id === def.id);
                     return savedPlayer ? { ...def, ...savedPlayer } : def;
-                });
+                });ф
             }
         } catch (e) {
             console.error("Failed to load players from localStorage:", e);
